@@ -31,6 +31,8 @@ Garbage in, Garbage out
 
 개발자와 전문가 사이에 내용을 전파하는 전달자가 많으면 많을수록 정보가 왜곡되고 손실이 발생하게 되며, 개발자는 최초에 고객이 요구한 것과는 다른 무언가를 만들게 된다.
 
+## 🟠 도메인모델
+
 ### 🟢 도메인 모델
 
 ```mermaid
@@ -127,8 +129,81 @@ stateDiagram-v2
 
 이렇듯 요구사항들을 분석하여 초기 모델에서 점진적으로 모델을 구현해가는 것을 도메인 모델 도출 과정이라 한다.
 
-## 🟠 도메인모델
-
 ## 🟠 엔티티와 밸류
 
+### 🟢 엔티티와 밸류
+
+`Entity` 가장 큰 특징으로는 식별자를 가진다는 것이다.
+
+```mermaid
+classDiagram
+    class Order{
+        +String orderNumber
+        +List<OrderLine> orderLines
+        +Money totalAmounts
+    }
+```
+
+다음과 같이 orderNumber라는 식별자 값을 가진다.
+
+db에 넣는 값이라면 자동 증가되는 id 값을 사용할 수 있다.
+
+`Value`
+
+```java
+public class ShippingInfo {
+    private String receiverName;
+    private String receiverPhoneNumber;
+
+    private String shippingAddress1;
+    private String shippingAddress2;
+    private String shippingZipcode;
+}
+```
+
+다음과 같은 class가 존재할 때 위 두개의 receiverName, receiverPhoneNumber은 받는 사람에 대한 정보이고 shippingAddress1, shippingAddress2, shippingZipcode 값은 주소 정보이다. 이 정보를 Value로 분리해낼 수 있다.
+
+```java
+public class Receiver {
+    private String name;
+    private String phoneNumber;
+}
+```
+
+```java
+public class Address {
+    private String address1;
+    private String address2;
+    private String zipcode;
+}
+```
+
+밸류 객체에서 데이터를 변경할 때는 기존 데이터를 변경하지 않고 변경한 데이터를 갖는 새로운 밸류 객체로 생성하는 방식을 선호한다. immutable(불변) 객체로써 사용한다.
+
+```java
+public class Address {
+    private String address1;
+    private String address2;
+    private String zipcode;
+
+    public updateZipcode(String zipcode) {
+        return new Address(this.address1, this.address2, zipcode);
+    }
+}
+```
+
+### 🟢 Dto
+
+Dto는 프레젠테이션 계층과 도메인 계층이 데이터를 서로 주고받을 때 사용하는 일종의 구조체다. 예전에는 DB 컬럼 값을 설정할때 set이 필요하여 기술 구현을 위해 어쩔 수 없이 Dto에 get/set을 구현해야 했다. 
+
+요즘 개발에서는 Dto 또한 set을 사용하지 않고 불변 객체로써의 장점을 사용하기 위해 적용하여 사용한다.
+
 ## 🟠 도메인 용어
+
+### 🟢 도메인 용어와 유비쿼터스 언어
+
+결제의 단계를 STEP1, STEP2, STEP3 라고 한다면 청므 보는 개발자가 이해하기 어려울 것이다. 이를 WAIT, DELIVERING, COMPLETE 와 같이 도메인 용어를 사용하여 처리하는 것이 필요하다.
+
+에릭 에반스는 도메인 주도 설계에서 언어의 중요함을 강조하기 위해 유비쿼터스 언어(Ubiquitous language)를 사용했다. 전문가, 관계자, 개발자가 도메인과 관련된 공통의 언어를 만들고 이를 대화, 문서, 도메인 모델, 코드, 테스트 등 모든곳에서 같은 용어를 사용한다는 것이다.
+
+알맞는 단어를 찾아내는 노력 또한 도메인 주도 개발로 다가가는 노력이다.
