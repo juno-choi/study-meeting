@@ -32,3 +32,4 @@
 2. LS ITC 지원하기
 3. 인프런 인강 듣기
 4. 이력서로 GPT랑 맞짱 뜨기
+5. The Interview Handbook 맞짱 뜨기
