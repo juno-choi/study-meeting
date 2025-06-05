@@ -30,9 +30,14 @@
 3. ~~로그인 처리 정리해두기~~
 
 ✅ 2025.06.05
-1. 면접을 위한 CS 전공지식 노트 뜯어보기
+1. ~~면접을 위한 CS 전공지식 노트 뜯어보기~~
+
+✅ 2025.06.06
 2. JVM/GC, Map, 복합 인덱스, DB 성능, osi 7계층 밑 apm 구성 등 java 개발자로써 기본 cs 지식 뜯어보기
 3. 이력서로 GPT랑 맞짱 뜨기
 4. The Interview Handbook 맞짱 뜨기
 5. 기아 면접 리뷰하기
 6. 시스템 구조 그려보기
+
+https://velog.io/@qlgks1/%EC%A3%BC%EB%8B%88%EC%96%B4-%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80-%EB%B0%98%EB%93%9C%EC%8B%9C-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-%EC%8B%A4%EB%AC%B4-%EC%A7%80%EC%8B%9D-%EC%B5%9C%EB%B2%94%EA%B7%A0
+
