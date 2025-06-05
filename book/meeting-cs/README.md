@@ -358,6 +358,8 @@ flowchart LR
 
 `다형성(polymorphism)`이란 하나의 메서드나 클래스가 다양한 방법으로 동작하는 것을 말한다.
 
+---
+
 또한 객체지향의 설계원칙으로는 SOLID 원칙이 존재한다.
 
 `SRP(Single Responsibility Principle)`란 모든 클래스는 단 하나의 책임만 가져야 한다.
