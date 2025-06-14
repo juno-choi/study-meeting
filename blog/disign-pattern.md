@@ -228,6 +228,8 @@ Interpreter 패턴은 어떤 언어의 문법을 클래스 구조로 표현하�
 
 ---
 
+# 🔴 디자인 패턴의 실제 사용 예시
+
 ## 🟠 Spring에서 사용되는 패턴
 
 ### 🟢 Singleton
@@ -268,8 +270,6 @@ ApplicationEventPublisher, @EventListener 구조
 복잡한 객체를 단계적으로 생성
 
 MockMvcBuilders, ResponseEntity.ok().body(), UriComponentsBuilder
-
----
 
 ## 🟠 실무에서 적용할 수 있는 패턴
 
