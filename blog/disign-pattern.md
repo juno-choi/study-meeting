@@ -225,3 +225,79 @@
 Interpreter 패턴은 어떤 언어의 문법을 클래스 구조로 표현하고, 해당 언어로 작성된 문장을 해석하는 해석기(인터프리터)를 구성하는 패턴이다.
 
 계산기와 같은 시스템을 예로 들수 있다.
+
+---
+
+## 🟠 Spring에서 사용되는 패턴
+
+### 🟢 Singleton
+
+하나의 인스턴스만 생성해서 재사용
+
+@Component, @Service 등 스프링 빈은 기본적으로 싱글톤 스코프
+
+### 🟢  Factory Method
+
+객체 생성을 서브클래스에 위임
+
+BeanFactory, ApplicationContext가 Bean을 생성할 때 사용
+
+### 🟢 Proxy
+실제 객체 앞에 대리 객체를 두어 접근 제어, 로깅, 트랜잭션 처리
+
+AOP (Aspect-Oriented Programming), @Transactional, @Async
+
+### 🟢 Template Method
+전체 알고리즘의 구조는 상위 클래스에서 정의하고, 세부 단계는 하위 클래스가 구현
+
+JdbcTemplate, RestTemplate, TransactionTemplate 등에서 사용됨
+
+### 🟢 Strategy
+
+런타임에 알고리즘을 변경할 수 있도록 전략을 캡슐화
+
+AuthenticationManager에서 인증 전략 사용, ResourceLoader, ViewResolver 등
+
+### 🟢 Observer
+
+상태 변경 시 등록된 리스너들에게 알림
+
+ApplicationEventPublisher, @EventListener 구조
+
+### 🟢 Builder
+복잡한 객체를 단계적으로 생성
+
+MockMvcBuilders, ResponseEntity.ok().body(), UriComponentsBuilder
+
+---
+
+## 🟠 실무에서 적용할 수 있는 패턴
+
+### 🟢 Strategy
+인터페이스를 기준으로 알고리즘/서비스 분기 처리 (e.g. PaymentService 전략 패턴으로 처리)
+
+### 🟢 Factory Method	객
+
+체 생성 책임 분리, if/switch 제거
+### 🟢 Builder
+
+생성자 파라미터가 많은 DTO/엔티티에 사용
+
+### 🟢 Singleton
+
+설정값, 캐시 객체 관리
+### 🟢 Decorator
+
+기능을 감싸면서 유연하게 확장 (e.g. 필터 체인)
+
+### 🟢 Adapter
+
+외부 API와 내부 모델 간의 데이터 포맷 변환
+
+### 🟢 Facade
+
+복잡한 로직을 하나의 인터페이스로 추상화 (e.g. 통합 서비스 계층)
+
+### 🟢 Template Method
+
+공통 흐름 정의 + 부분 동작은 오버라이드 (e.g. 인증 로직 등)
