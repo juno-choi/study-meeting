@@ -1,4 +1,8 @@
 1. nc 웹개발팀 - 6월 30일까지
+1. 현대 - 이력서는 다 써둠... 공부가 어느정도 하고 DDD라도 다 읽고 하자
+1. 라인 페이(태국) - https://careers.linecorp.com/ko/jobs/2430
+1. 토스 플레이스 - https://toss.im/career/job-detail?job_id=4071141003&company=%ED%86%A0%EC%8A%A4%ED%94%8C%EB%A0%88%EC%9D%B4%EC%8A%A4&detailedPosition=Platform
+1. ls 지원
 
 ---
 
