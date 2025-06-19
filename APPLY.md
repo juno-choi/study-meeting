@@ -3,6 +3,10 @@
 1. 라인 페이(태국) - https://careers.linecorp.com/ko/jobs/2430
 1. 토스 플레이스 - https://toss.im/career/job-detail?job_id=4071141003&company=%ED%86%A0%EC%8A%A4%ED%94%8C%EB%A0%88%EC%9D%B4%EC%8A%A4&detailedPosition=Platform
 1. ls 지원
+2. 효성 itx
+3. 애커튼테크놀로지
+4. 씨제이 올리브영 인터널 플랫폼
+5. 잡코리아 백엔드
 
 ---
 
@@ -14,8 +18,8 @@
     - 탈락
 4. NHN 웹개발팀
     - 붙었지만 내가 취소함... 코테는 진짜 안되겠다.
-
-1. 토스 TPM 직무 - 지원 완료
+5. 토스 TPM 직무 - 지원 완료
+   - 탈락
 
 1. 안랩 (15일까지)
     - [웹서비스](https://ahnlab.recruiter.co.kr/career/jobs/71660)
