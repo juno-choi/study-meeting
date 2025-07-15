@@ -1,0 +1,137 @@
+name: Update Documentation Index
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "docs/**/*.md"
+      - "tutorials/**/*.md"
+      - ".github/workflows/update-docs-index.yml"
+  pull_request:
+    branches: [main, master]
+    paths:
+      - "docs/**/*.md"
+      - "tutorials/**/*.md"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-docs-index:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate documentation index
+        run: |
+          INDEX_FILE="temp_docs_index.md"
+
+          echo "## 📚 Documentation" > $INDEX_FILE
+          echo "" >> $INDEX_FILE
+
+          if [ -d "docs" ]; then
+            echo "### 📖 Guides" >> $INDEX_FILE
+            echo "" >> $INDEX_FILE
+          
+            find docs -name "*.md" -type f | sort | while read file; do
+              title=$(head -20 "$file" | grep -m 1 "^# " | sed 's/^# //' || basename "$file" .md)
+          
+              if [ -z "$title" ]; then
+                title=$(basename "$file" .md)
+              fi
+          
+              echo "- [$title](./$file)" >> $INDEX_FILE
+            done
+            echo "" >> $INDEX_FILE
+          fi
+
+          if [ -d "tutorials" ]; then
+            echo "### 🎓 Tutorials" >> $INDEX_FILE
+            echo "" >> $INDEX_FILE
+          
+            find tutorials -name "*.md" -type f | sort | while read file; do
+              title=$(head -20 "$file" | grep -m 1 "^# " | sed 's/^# //' || basename "$file" .md)
+          
+              if [ -z "$title" ]; then
+                title=$(basename "$file" .md)
+              fi
+          
+              echo "- [$title](./$file)" >> $INDEX_FILE
+            done
+            echo "" >> $INDEX_FILE
+          fi
+
+          echo "### 📋 Other Documents" >> $INDEX_FILE
+          echo "" >> $INDEX_FILE
+
+          for file in CONTRIBUTING.md CHANGELOG.md LICENSE.md CODE_OF_CONDUCT.md; do
+            if [ -f "$file" ]; then
+              title=$(head -20 "$file" | grep -m 1 "^# " | sed 's/^# //' || basename "$file" .md)
+              if [ -z "$title" ]; then
+                title=$(basename "$file" .md)
+              fi
+              echo "- [$title](./$file)" >> $INDEX_FILE
+            fi
+          done
+
+          echo "Generated documentation index:"
+          cat $INDEX_FILE
+
+      - name: Update README.md
+        run: |
+          INDEX_FILE="temp_docs_index.md"
+
+          if [ ! -f "README.md" ]; then
+            echo "README.md not found, creating new one"
+            echo "# Project Documentation" > README.md
+            echo "" >> README.md
+            echo "<!-- DOCS_INDEX_START -->" >> README.md
+            echo "<!-- DOCS_INDEX_END -->" >> README.md
+          fi
+
+          if ! grep -q "<!-- DOCS_INDEX_START -->" README.md; then
+            echo "" >> README.md
+            echo "<!-- DOCS_INDEX_START -->" >> README.md
+            echo "<!-- DOCS_INDEX_END -->" >> README.md
+          fi
+
+          awk '
+            /<!-- DOCS_INDEX_START -->/ { 
+              print $0
+              system("cat '$INDEX_FILE'")
+              skip=1
+              next
+            }
+            /<!-- DOCS_INDEX_END -->/ { 
+              skip=0
+            }
+            !skip
+          ' README.md > README_new.md
+
+          mv README_new.md README.md
+          rm $INDEX_FILE
+
+          echo "Updated README.md with new documentation index"
+
+      - name: Check for changes
+        id: verify-changed-files
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: |
+          git config --local user.email "ililil9482@naver.com"
+          git config --local user.name "juno-choi"
+          git add README.md
+          git commit -m "📚 Auto-update documentation index"
+          git push
