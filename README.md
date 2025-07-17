@@ -44,6 +44,7 @@
 - [🔴 면접 리뷰](./docs/meeting/bdacs/1차/1차_리뷰.md)
 - [🔴 기술 면접 준비 시작](./docs/meeting/bdacs/1차/1차_준비.md)
 - [2차_준비](./docs/meeting/bdacs/2차/2차_준비.md)
+- [2차_준비2](./docs/meeting/bdacs/2차/2차_준비2.md)
 - [🔴 BDACS](./docs/meeting/bdacs/커피챗/README.md)
 - [🔴 코테 리뷰](./docs/meeting/dwhale/1차/코테.md)
 - [🔴 준비](./docs/meeting/dwhale/2차/기술면접.md)
