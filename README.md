@@ -47,6 +47,7 @@
 - [🔴 BDACS](./docs/meeting/bdacs/커피챗/README.md)
 - [🔴 코테 리뷰](./docs/meeting/dwhale/1차/코테.md)
 - [🔴 준비](./docs/meeting/dwhale/2차/기술면접.md)
+- [🔴 기술 면접](./docs/meeting/dwhale/2차/기술면접_실전.md)
 - [모의면접](./docs/meeting/dwhale/2차/모의면접.md)
 - [🔴 kate hwang](./docs/meeting/head-hunter/kate-hwang.md)
 - [README](./docs/meeting/kia/README.md)
