@@ -43,6 +43,7 @@
 - [🔴 1차 면접](./docs/meeting/bdacs/1차/1차.md)
 - [🔴 면접 리뷰](./docs/meeting/bdacs/1차/1차_리뷰.md)
 - [🔴 기술 면접 준비 시작](./docs/meeting/bdacs/1차/1차_준비.md)
+- [2차_완료](./docs/meeting/bdacs/2차/2차_완료.md)
 - [2차_준비](./docs/meeting/bdacs/2차/2차_준비.md)
 - [2차_준비2](./docs/meeting/bdacs/2차/2차_준비2.md)
 - [🔴 BDACS](./docs/meeting/bdacs/커피챗/README.md)
